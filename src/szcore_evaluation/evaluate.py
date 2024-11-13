@@ -116,10 +116,10 @@ def evaluate_dataset(
             (aggregated_sample_results, aggregated_event_results),
         ):
             for metric in ["sensitivity", "precision", "f1", "fpRate"]:
-                aggregated_result[metric] = np.mean(
+                aggregated_result[metric] = np.nanmean(
                     [getattr(x, metric) for x in result_builder.values()]
                 )
-                aggregated_result[f"{metric}_std"] = np.std(
+                aggregated_result[f"{metric}_std"] = np.nanstd(
                     [getattr(x, metric) for x in result_builder.values()]
                 )
     else:
